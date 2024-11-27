@@ -1,0 +1,9 @@
+appium-python-client>=2.11.1
+selenium>=4.11.2
+pillow>=10.0.0
+opencv-python>=4.8.0
+requests>=2.31.0
+python-dotenv>=1.0.0
+numpy>=1.24.0
+PyQt6>=6.5.2
+webdriver_manager>=4.0.0

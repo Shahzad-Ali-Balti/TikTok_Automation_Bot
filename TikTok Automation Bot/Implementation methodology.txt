@@ -1,0 +1,49 @@
+1. Install the given list of softwares. (I'll provide the available setups in zip file).
+2. Use the given IDs to login. (Use your own where not given). 
+3. Connect VPN (singapore).
+4. Run Bluestack, run App player in it and open settings, goto advance tab, enable Andriod Debug Bridge and Input debugging buttons. 
+5. Open tiktok and login with given credentials. (Remember to always use VPN connected).
+6. Once these both setup are done. Place the "Platform tool" and "Cmdline-tool" folders in your C: drive. (I'll share the folders).
+7. Open appium desktop server, appium inspector and vscode (Open provided folder).
+8. Open terminal in vscode and run following commands step by step. 
+	-.venv/Scripts/activate (it activates the virtual environment. Try to run every time you open a new terminal)
+	-adb devices (Expected output: List of devices attached  emulator-5554   device)
+	-adb shell getprop ro.build.version.release (It will give you the device version "9")
+	-adb shell getprop ro.product.device (It will give you the platform name)
+9. Open a new terminal in vscode. Run this command:
+	-appium (it will give you the urls to set up appium server i.e. " http://127.0.0.1:4723/ ")
+10. In appium server app, Place the "Host" and "Port" accordingly and hit the "start server" button.
+11. Once server is running, goto appium inspector app, set the "Remote host", "Remote Port".
+	In remote path, set: "/wd/hub" (default for appium server)
+12. Then in JSON representation in appium inspector, set these values and save it. 
+{
+    "platformName": "Android",
+    "platformVersion": "9",  // Replace with Bluestack version
+    "deviceName": "emulator-5554",  // Replace with your Bluestack device name
+    "appPackage": "com.zhiliaoapp.musically",  // TikTok app package
+    "appActivity": "com.ss.android.ugc.aweme.main.MainActivity",  // TikTok main activity
+    "automationName": "UiAutomator2"
+}
+
+save this in JSON representation. Hit the Start Srssion button. (It will setup the inspector with appium server, bluestack and tiktok).
+
+
+13. I have done this work till now. After this, use appium Inspector to Navigate to tiktok shop feature and find element IDs,etc.
+14. Locate the buttons, search bar and other required content. 
+15. Use GPT or Claude to write a python script to automate the bot using this upper defined setup. 
+16. Using the scripts in vscode. Create a bot for automating the add_to_cart feature for given item when it is available in stock.
+17. Also add a Notification feature to notify the user when item is added to cart. 
+18. When creating the bot, keep in mind to handle user verification captchas.
+19. Test the scripts with multiple products. 
+20. Once all done, make it a desktop app so that user can let it running on it's PC.
+
+
+***CONSIDER USING GPT or CLAUDE IF STUCK ON ANY SITUATION, or CONTACT ME***
+
+Challenges to Address
+Dynamic Selectors:
+	Use Appium Inspector (in Appium Desktop) to identify UI elements if XPath or IDs change.
+Error Handling:
+	Wrap critical actions in try-except blocks to handle unexpected UI issues.
+VPN Stability:
+	Ensure the VPN connection remains active to avoid region lock issues.
